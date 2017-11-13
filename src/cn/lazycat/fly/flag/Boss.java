@@ -1,9 +1,7 @@
 package cn.lazycat.fly.flag;
 
-import cn.lazycat.fly.obj.bullet.BossBullet;
 import cn.lazycat.fly.FlyGame;
 
-import java.util.List;
 
 /**
  * 代表所有Boss的接口

@@ -11,6 +11,8 @@ public class Hero extends FlyingObject {
 
     private int life;           // 剩余生命
     private int doubleFire;     // 火力值
+    private int power;          // 英雄机能量
+    private boolean isSuper;    // 是否处于
 
     public Hero() {
         super.image = FlyGame.hero0;
@@ -45,8 +47,28 @@ public class Hero extends FlyingObject {
         // 英雄机的初始位置是固定死的
         super.x = 150;
         super.y = 400;
-        this.life = 10;
+        this.life = 67;
         this.doubleFire = 0;
+        this.power = 0;
+        this.isSuper = false;
+    }
+
+
+    public boolean isSuper() {
+        return isSuper;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void powerFire() {
+        isSuper = true;
+    }
+
+    public void powerFireDown() {
+        power = 0;
+        isSuper = false;
     }
 
     @Override
@@ -67,12 +89,21 @@ public class Hero extends FlyingObject {
         List<Bullet> bullets = new LinkedList<>();
         int xStep = width / 4;
         int yStep = 20;
-        if (this.doubleFire == 0) {  // 此时发射一发子弹
-            bullets.add(new Bullet(x + 2 * xStep, y - yStep));
-        } else {   // 此时发射双倍子弹
-            bullets.add(new Bullet(x + xStep, y - yStep));
-            bullets.add(new Bullet(x + 3 * xStep, y - yStep));
-            doubleFire -= 1;  // 双倍火力减少
+
+        if (this.isSuper) {  // 超级模式三连发
+            bullets.add(new Bullet(x + xStep, y - yStep, FlyGame.superBullet));
+            bullets.add(new Bullet(x + 2 * xStep, y - yStep, FlyGame.superBullet));
+            bullets.add(new Bullet(x + 3 * xStep, y - yStep, FlyGame.superBullet));
+            --power;
+        } else {
+
+            if (this.doubleFire == 0) {  // 此时发射一发子弹
+                bullets.add(new Bullet(x + 2 * xStep, y - yStep, FlyGame.bullet));
+            } else {   // 此时发射双倍子弹
+                bullets.add(new Bullet(x + xStep, y - yStep, FlyGame.bullet));
+                bullets.add(new Bullet(x + 3 * xStep, y - yStep, FlyGame.bullet));
+                --doubleFire;  // 双倍火力减少
+            }
         }
         return bullets;
     }
@@ -104,6 +135,10 @@ public class Hero extends FlyingObject {
         int y = flying.getY();
 
         return x > (x1 - flying.getWidth()) && x < x2  && y > y1 && y < y2;
+    }
+
+    public void addPower(int more) {
+        this.power += more;
     }
 
 }

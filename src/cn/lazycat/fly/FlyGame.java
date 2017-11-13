@@ -19,7 +19,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.MemoryImageSource;
-import java.math.BigInteger;
 import java.util.*;
 import java.util.List;
 import java.util.Timer;
@@ -51,8 +50,9 @@ public class FlyGame extends JPanel {
     public static BufferedImage bomb;
     public static BufferedImage doubleFire;
     public static BufferedImage bigPlane;
+    public static BufferedImage superBullet;
 
-    public static List<BufferedImage> bloodBars;
+    private static List<BufferedImage> bloodBars;
 
     // 游戏的得分
     private static int score = 0;
@@ -91,9 +91,11 @@ public class FlyGame extends JPanel {
 
             bloodBars = new ArrayList<>(67);
             for (int i = 0; i < 67; ++i) {
-                bloodBars.add(ImageIO.read(FlyGame.class.getResource("images/bloodBars/bloodBar"
-                        + (i + 1) + ".png")));
+                bloodBars.add(ImageIO.read(FlyGame.class.getResource(
+                        "images/bloodBars/bloodBar" + (i + 1) + ".png")));
             }
+
+            superBullet = ImageIO.read(FlyGame.class.getResource("superBullet.png"));
 
 
         } catch (Exception e) {
@@ -119,8 +121,7 @@ public class FlyGame extends JPanel {
     @Override
     public void paint(Graphics g) {
         g.drawImage(background, 0, 0, null);
-        paintMark(g);
-        paintLife(g);
+
         switch (status) {
             case START:
                 g.drawImage(start, 0, 0, null);
@@ -133,10 +134,16 @@ public class FlyGame extends JPanel {
                 return;
 
         }
+        switch (status) {
+            case RUNNING:
+                paintBullets(g);
+                paintEnemies(g);
+            case PAUSE:
+                paintLife(g);
+            case GAME_OVER:
+                paintMark(g);
+        }
         paintHero(g);
-        paintBullets(g);
-        paintEnemies(g);
-
     }
 
     private void paintHero(Graphics g) {
@@ -174,6 +181,9 @@ public class FlyGame extends JPanel {
     private void paintLife(Graphics g) {
         if (hero.getLife() >= 1 && hero.getLife() <= 67) {
             g.drawImage(bloodBars.get(hero.getLife() - 1), 20, HEIGHT - 100, null);
+        }
+        if (hero.getLife() > 67) {
+            g.drawImage(bloodBars.get(66), 20, HEIGHT - 100, null);
         }
     }
 
@@ -288,7 +298,12 @@ public class FlyGame extends JPanel {
                     if (flying instanceof Enemy) {
                         Enemy enemy = (Enemy) flying;
                         if (enemy.isDead()) {  // 敌人死亡
+
+                            // 英雄机需要增加能量值，默认为1
+                            int addPower = 1;
+
                             if (flying instanceof Boss) {  // 击杀Boss
+                                addPower = 20;
                                 boss = null;
                                 // 需要奖励子弹速度
                                 Award award = (Award) flying;
@@ -310,12 +325,14 @@ public class FlyGame extends JPanel {
                             }
 
                             if (flying instanceof ShootEnemy) {  // 击杀发射子弹的普通敌人
+                                addPower = 2;
                                 // 把敌人从发射队列剔除
                                 ShootEnemy shootEnemy1 = (ShootEnemy) flying;
                                 shootEnemies.removeIf(shootEnemy1::equals);
                             }
 
                             iteEnemy.remove();  // 清除这个敌人
+                            hero.addPower(addPower);  // 英雄机增加能量
                             score += enemy.getScore();  // 击败敌人都能加分
                         }
                         iteBullet.remove();  // 清除这个子弹
@@ -334,8 +351,13 @@ public class FlyGame extends JPanel {
             if (hero.hitBy(flying)) {  // 英雄被撞击了
                 if (flying instanceof Enemy) {  // 被敌人撞击了
                     Enemy enemy = (Enemy) flying;
-                    flyingIte.remove();  // 敌人灭亡
-                    hero.reduceLife(enemy.getHit());
+                    flyingIte.remove();      // 敌人灭亡
+                    if (!hero.isSuper()) {   // 英雄只有在非超级模式才会扣血
+                        hero.reduceLife(enemy.getHit());
+                    }
+                    if (flying instanceof ShootEnemy) {  // 从发射队列删除被装毁的敌机
+                        shootEnemies.removeIf(flying::equals);
+                    }
                 }
                 if (flying instanceof Gift) {  // 吃到了补给物品
                     flyingIte.remove(); // 补给品消失
@@ -425,6 +447,18 @@ public class FlyGame extends JPanel {
 
     }
 
+    private void powerAction() {
+        if (!hero.isSuper()) {
+            if (hero.getPower() >= 100) {  // 进入超级模式
+                hero.powerFire();
+            }
+        } else {
+            if (hero.getPower() <= 0) {    // 退出超级模式
+                hero.powerFireDown();
+            }
+        }
+    }
+
 
     private void action() {  // 绑定事件、启动计时器
 
@@ -438,6 +472,7 @@ public class FlyGame extends JPanel {
                             hero.init();
                             bullets.clear();
                             flyings.clear();
+                            shootEnemies.clear();
                             boss = null;
                             score = 0;
                             level = 1;
@@ -485,24 +520,18 @@ public class FlyGame extends JPanel {
             public void run() {
                 switch (status) {
                     case RUNNING:
-                        // 检测游戏是否失败
-                        checkGameOverAction();
-                        // 敌机进场
-                        enterAction();
-                        // 所有飞行物前进一次
-                        stepAction();
-                        // 发射子弹
-                        shootAction();
-                        // 子弹射击敌机
-                        bitAction();
-                        // 敌机撞击英雄机
-                        heroBitAction();
-                        // 清理敌机
-                        clearAction();
-                        // 发射礼包
-                        enterGiftAction();
-                        // 升级难度
-                        updateLevel();
+
+                        checkGameOverAction(); // 检测游戏是否失败
+                        enterAction();  // 敌机进场
+                        stepAction();  // 所有飞行物前进一次
+                        shootAction();  // 发射子弹
+                        bitAction();  // 子弹射击敌机
+                        heroBitAction();  // 敌机撞击英雄机
+                        clearAction();  // 清理敌机
+                        enterGiftAction();  // 发射礼包
+                        powerAction();  // 增加能量
+                        updateLevel();   // 增加游戏难度
+
                     case GAME_OVER:
                     case PAUSE:
                     case START:
