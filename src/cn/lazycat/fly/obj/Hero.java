@@ -35,8 +35,8 @@ public class Hero extends FlyingObject {
         this.life -= reduce;
     }
 
-    public void addDoubleFire() {
-        doubleFire += 8;
+    public void addDoubleFire(int more) {
+        doubleFire += more;
     }
 
     public void init() {  // 初始化英雄机

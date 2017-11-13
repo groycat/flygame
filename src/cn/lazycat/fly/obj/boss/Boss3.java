@@ -12,10 +12,10 @@ import java.util.Random;
 
 public class Boss3 extends Boss implements Enemy {
 
-    public Boss3() {
+    public Boss3(int level) {
         super.image = FlyGame.boss3;
         super.speed = 2;
-        super.health = 80;
+        super.health = 80 * level;
         super.width = image.getWidth();
         super.height = image.getHeight();
     }

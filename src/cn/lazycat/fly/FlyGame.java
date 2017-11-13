@@ -10,6 +10,8 @@ import cn.lazycat.fly.obj.bullet.Bullet;
 import cn.lazycat.fly.obj.enemy.Airplane;
 import cn.lazycat.fly.obj.enemy.Bee;
 import cn.lazycat.fly.obj.gift.Blood;
+import cn.lazycat.fly.obj.gift.Bomb;
+import cn.lazycat.fly.obj.gift.DoubleFire;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -44,6 +46,9 @@ public class FlyGame extends JPanel {
     public static BufferedImage bossBullet1;
     public static BufferedImage bossBullet2;
     public static BufferedImage blood;
+    public static BufferedImage bomb;
+    public static BufferedImage doubleFire;
+
 
     // 游戏的得分
     private static int score = 0;
@@ -53,6 +58,9 @@ public class FlyGame extends JPanel {
 
     // 子弹射击频率
     private static int speedLevel = 1;
+
+    // BOSS 的强度等级
+    private static int bossLevel = 1;
 
     // 初始化各种游戏参数
     static {
@@ -73,6 +81,8 @@ public class FlyGame extends JPanel {
             bossBullet1 = ImageIO.read(FlyGame.class.getResource("images/bossBullet1.png"));
             bossBullet2 = ImageIO.read(FlyGame.class.getResource("images/bossBullet2.png"));
             blood = ImageIO.read(FlyGame.class.getResource("images/blood.png"));
+            bomb = ImageIO.read(FlyGame.class.getResource("images/bomb.png"));
+            doubleFire = ImageIO.read(FlyGame.class.getResource("images/doubleFire.png"));
 
 
         } catch (Exception e) {
@@ -170,11 +180,6 @@ public class FlyGame extends JPanel {
             } else {
                 flying = new Airplane();
             }
-
-            if (type == 6) {  // 产生一个血包
-                FlyingObject gift = new Blood();
-                flyings.add(gift);
-            }
             flyings.add(flying);
         }
     }
@@ -229,7 +234,7 @@ public class FlyGame extends JPanel {
 
         if (boss != null) {  // Boss发射子弹
             ++bossShootIndex;
-            if (bossShootIndex >= 60) {
+            if (bossShootIndex >= 60 - (level * 5)) {
                 bossShootIndex = 0;
                 List<BossBullet> bossBullets = boss.shoot();
                 flyings.addAll(bossBullets);
@@ -251,7 +256,7 @@ public class FlyGame extends JPanel {
                         Award award = (Award) flying;
                         switch (award.getType()) {
                             case Award.DOUBLE_FIRE:  // 此时增加双倍火力
-                                hero.addDoubleFire();
+                                hero.addDoubleFire(8);
                                 break;
                             case Award.LIFE:   // 此时增加生命
                                 hero.addLife(1);
@@ -310,6 +315,13 @@ public class FlyGame extends JPanel {
                         case Gift.BLOOD:
                             hero.addLife(3);
                             break;
+                        case Gift.CLEAR:
+                            // BOSS 机不能被炸弹消灭
+                            flyings.removeIf(enemy -> !(enemy instanceof Boss) && enemy instanceof Enemy);
+                            break;
+                        case Gift.DOUBLR_FIRE:
+                            hero.addDoubleFire(20);
+                            break;
                     }
                 }
             }
@@ -333,18 +345,21 @@ public class FlyGame extends JPanel {
             ++bossIndex;
             if (bossIndex >= 1500 && bossIndex < 2000) {
                 bossIndex = 2000;
-                boss = new Boss1();
+                boss = new Boss1(bossLevel);
                 flyings.add(boss);
             }
             if (bossIndex >= 8000 && bossIndex < 9000) {
                 bossIndex = 10000;
-                boss = new Boss2();
+                boss = new Boss2(bossLevel);
                 flyings.add(boss);
             }
             if (bossIndex >= 16000) {
                 bossIndex = 0;
-                boss = new Boss3();
+                boss = new Boss3(bossLevel);
                 flyings.add(boss);
+                if (bossLevel <= 10) {
+                    ++bossLevel;  // 刷完一轮BOSS，下一轮BOSS的难度变大
+                }
             }
         }
     }
@@ -354,6 +369,30 @@ public class FlyGame extends JPanel {
             this.status = GAME_OVER;
         }
     }
+
+    private int giftIndex = 0;
+    private void enterGiftAction() {
+
+        ++giftIndex;
+        if (giftIndex > 500) {  // 每 5 秒可能产生一个礼包
+            giftIndex = 0;
+            Random random = new Random();
+            int rand = random.nextInt(20);
+            if (rand >= 1 && rand <= 3) {
+                Gift blood = new Blood();
+                flyings.add((FlyingObject) blood);
+            } else if (rand > 3 && rand <= 4) {
+                Gift doubleFire = new DoubleFire();
+                flyings.add((DoubleFire) doubleFire);
+            } else if (rand == 5) {
+                Gift bomb = new Bomb();
+                flyings.add((FlyingObject) bomb);
+            }
+
+        }
+
+    }
+
 
     private void action() {  // 绑定事件、启动计时器
 
@@ -370,6 +409,7 @@ public class FlyGame extends JPanel {
                             boss = null;
                             score = 0;
                             level = 1;
+                            bossLevel = 1;
                         }
                         status = START;
                         break;
@@ -427,6 +467,8 @@ public class FlyGame extends JPanel {
                         heroBitAction();
                         // 清理敌机
                         clearAction();
+                        // 发射礼包
+                        enterGiftAction();
                         // 升级难度
                         updateLevel();
                     case GAME_OVER:
