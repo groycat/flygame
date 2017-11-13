@@ -3,6 +3,7 @@ package cn.lazycat.fly.obj;
 import cn.lazycat.fly.flag.FlyingObject;
 import cn.lazycat.fly.obj.bullet.Bullet;
 import cn.lazycat.fly.FlyGame;
+import cn.lazycat.fly.obj.bullet.Laser;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -49,7 +50,7 @@ public class Hero extends FlyingObject {
         super.y = 400;
         this.life = 67;
         this.doubleFire = 0;
-        this.power = 0;
+        this.power = 100;
         this.isSuper = false;
     }
 
@@ -90,11 +91,13 @@ public class Hero extends FlyingObject {
         int xStep = width / 4;
         int yStep = 20;
 
-        if (this.isSuper) {  // 超级模式三连发
+        if (this.isSuper) {
+            bullets.add(new Laser(Laser.LEFT, x, y - yStep));
             bullets.add(new Bullet(x + xStep, y - yStep, FlyGame.superBullet));
             bullets.add(new Bullet(x + 2 * xStep, y - yStep, FlyGame.superBullet));
             bullets.add(new Bullet(x + 3 * xStep, y - yStep, FlyGame.superBullet));
-            --power;
+            bullets.add(new Laser(Laser.RIGHT, x + width, y - yStep));
+            power -= 3;
         } else {
 
             if (this.doubleFire == 0) {  // 此时发射一发子弹

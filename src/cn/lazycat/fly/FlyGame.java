@@ -51,8 +51,12 @@ public class FlyGame extends JPanel {
     public static BufferedImage doubleFire;
     public static BufferedImage bigPlane;
     public static BufferedImage superBullet;
+    public static BufferedImage laser;
+    private static BufferedImage powerfulBlood;
+
 
     private static List<BufferedImage> bloodBars;
+    private static List<BufferedImage> powerBars;
 
     // 游戏的得分
     private static int score = 0;
@@ -88,14 +92,23 @@ public class FlyGame extends JPanel {
             bomb = ImageIO.read(FlyGame.class.getResource("images/bomb.png"));
             doubleFire = ImageIO.read(FlyGame.class.getResource("images/doubleFire.png"));
             bigPlane = ImageIO.read(FlyGame.class.getResource("images/bigPlane.png"));
+            laser = ImageIO.read(FlyGame.class.getResource("images/laser.png"));
 
+            powerfulBlood = ImageIO.read(FlyGame.class.getResource("images/bloodBars/powerfulBlood.png"));
             bloodBars = new ArrayList<>(67);
             for (int i = 0; i < 67; ++i) {
                 bloodBars.add(ImageIO.read(FlyGame.class.getResource(
                         "images/bloodBars/bloodBar" + (i + 1) + ".png")));
             }
 
-            superBullet = ImageIO.read(FlyGame.class.getResource("superBullet.png"));
+            powerBars = new ArrayList<>(11);
+            for (int i = 0; i < 11; ++i) {
+                powerBars.add(ImageIO.read(FlyGame.class.getResource(
+                        "images/powerBars/powerBar" + i + ".png")));
+            }
+
+
+            superBullet = ImageIO.read(FlyGame.class.getResource("images/superBullet.png"));
 
 
         } catch (Exception e) {
@@ -138,6 +151,7 @@ public class FlyGame extends JPanel {
             case RUNNING:
                 paintBullets(g);
                 paintEnemies(g);
+                paintPower(g);
             case PAUSE:
                 paintLife(g);
             case GAME_OVER:
@@ -179,11 +193,26 @@ public class FlyGame extends JPanel {
     }
 
     private void paintLife(Graphics g) {
-        if (hero.getLife() >= 1 && hero.getLife() <= 67) {
-            g.drawImage(bloodBars.get(hero.getLife() - 1), 20, HEIGHT - 100, null);
+        if (hero.isSuper()) {
+            g.drawImage(powerfulBlood, 20, HEIGHT - 100, null);
+        } else {
+            if (hero.getLife() >= 1 && hero.getLife() <= 67) {
+                g.drawImage(bloodBars.get(hero.getLife() - 1), 20, HEIGHT - 100, null);
+            }
+            if (hero.getLife() > 67) {
+                g.drawImage(bloodBars.get(66), 20, HEIGHT - 100, null);
+            }
         }
-        if (hero.getLife() > 67) {
-            g.drawImage(bloodBars.get(66), 20, HEIGHT - 100, null);
+
+    }
+
+    private void paintPower(Graphics g) {
+        if (hero.getPower() >= 0 && hero.getPower() < 110) {
+            g.drawImage(powerBars.get(hero.getPower() / 10), 20, HEIGHT - 70, null);
+        } else if (hero.getPower() < 0) {
+            g.drawImage(powerBars.get(0), 20, HEIGHT - 70, null);
+        } else {
+            g.drawImage(powerBars.get(10), 20, HEIGHT - 70, null);
         }
     }
 
@@ -332,8 +361,11 @@ public class FlyGame extends JPanel {
                             }
 
                             iteEnemy.remove();  // 清除这个敌人
-                            hero.addPower(addPower);  // 英雄机增加能量
+                            if (!hero.isSuper()) {    // 超级模式下不加能量
+                                hero.addPower(addPower);  // 英雄机增加能量
+                            }
                             score += enemy.getScore();  // 击败敌人都能加分
+
                         }
                         iteBullet.remove();  // 清除这个子弹
                     }
@@ -449,7 +481,7 @@ public class FlyGame extends JPanel {
 
     private void powerAction() {
         if (!hero.isSuper()) {
-            if (hero.getPower() >= 100) {  // 进入超级模式
+            if (hero.getPower() >= 110) {  // 进入超级模式
                 hero.powerFire();
             }
         } else {
