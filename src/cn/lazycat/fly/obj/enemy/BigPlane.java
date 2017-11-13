@@ -61,9 +61,11 @@ public class BigPlane extends FlyingObject implements Enemy, ShootEnemy {
     @Override
     public List<BossBullet> shoot() {
         List<BossBullet> bullets = new LinkedList<>();
-        // 打飞机发射子弹是在中间产生的
-        bullets.add(new BossBullet(1, 1, FlyGame.bossBullet1,
-                super.x + super.width / 2, super.y + 20));
+        if (super.y >= foot - 10) {
+            // 打飞机发射子弹是在中间产生的
+            bullets.add(new BossBullet(3, 1, FlyGame.bossBullet1,
+                    super.x + super.width / 2, super.y + 20));
+        }
         return bullets;
     }
 }

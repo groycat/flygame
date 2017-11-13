@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd75aade-1b55-4bbf-865f-26d93bbc64d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cn/lazycat/fly/flag/ShootEnemy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/images/enemy2.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/LazyCat.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/flyProject/cn/lazycat/fly/FlyGame$1.class" afterPath="$PROJECT_DIR$/out/production/flyProject/cn/lazycat/fly/FlyGame$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/flyProject/cn/lazycat/fly/FlyGame$2.class" afterPath="$PROJECT_DIR$/out/production/flyProject/cn/lazycat/fly/FlyGame$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/flyProject/cn/lazycat/fly/FlyGame.class" afterPath="$PROJECT_DIR$/out/production/flyProject/cn/lazycat/fly/FlyGame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/lazycat/fly/FlyGame.java" afterPath="$PROJECT_DIR$/src/cn/lazycat/fly/FlyGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/lazycat/fly/flag/Boss.java" afterPath="$PROJECT_DIR$/src/cn/lazycat/fly/flag/Boss.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java" afterPath="$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java" afterPath="$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,26 +30,15 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="FlyGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/FlyGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="229" column="31" lean-forward="false" selection-start-line="229" selection-start-column="31" selection-end-line="229" selection-end-column="31" />
+            <state relative-caret-position="452">
+              <caret line="173" column="40" lean-forward="false" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="40" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#paint#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#paintBullets#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#paintEnemies#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#paintMark#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#paintLife#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#stepAction#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#nextStep#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#clearAction#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#nextClear#0;class#FlyGame#0" expanded="false" />
-                <element signature="method#shootAction#0;class#FlyGame#0" expanded="false" />
-                <element signature="e#16409#17389#0" expanded="true" />
-                <element signature="e#17388#17389#0" expanded="true" />
+                <element signature="e#16743#17723#0" expanded="true" />
+                <element signature="e#17722#17723#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,14 +47,10 @@
       <file leaf-file-name="BigPlane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="1170">
+              <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <element signature="e#914#915#0" expanded="true" />
-                <element signature="e#1048#1049#0" expanded="true" />
-                <element signature="e#1072#1073#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,10 +59,17 @@
       <file leaf-file-name="Airplane.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Airplane.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="600">
               <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="31" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#795#796#0" expanded="false" />
+                <element signature="e#834#835#0" expanded="false" />
+                <element signature="e#879#880#0" expanded="false" />
+                <element signature="e#906#907#0" expanded="false" />
+                <element signature="e#947#948#0" expanded="false" />
+                <element signature="e#971#972#0" expanded="false" />
+                <element signature="e#1011#1012#0" expanded="false" />
+                <element signature="e#1057#1058#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,8 +78,8 @@
       <file leaf-file-name="BossBullet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/bullet/BossBullet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="392">
+              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,12 +90,10 @@
       <file leaf-file-name="Hero.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="17" column="47" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
+            <state relative-caret-position="-612">
+              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#801#802#0" expanded="true" />
-                <element signature="e#835#836#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,11 +102,9 @@
       <file leaf-file-name="ShootEnemy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/flag/ShootEnemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="300">
               <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,8 +112,8 @@
       <file leaf-file-name="Boss.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/flag/Boss.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            <state relative-caret-position="692">
+              <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,10 +124,17 @@
       <file leaf-file-name="Bee.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Bee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-565">
+            <state relative-caret-position="210">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#949#950#0" expanded="false" />
+                <element signature="e#981#982#0" expanded="false" />
+                <element signature="e#1274#1275#0" expanded="false" />
+                <element signature="e#1299#1300#0" expanded="false" />
+                <element signature="e#1344#1345#0" expanded="false" />
+                <element signature="e#1371#1372#0" expanded="false" />
+                <element signature="e#1412#1413#0" expanded="false" />
+                <element signature="e#1436#1437#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -196,10 +190,10 @@
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/obj/boss/Boss2.java" />
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/Bomb.java" />
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/DoubleFire.java" />
-        <option value="$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java" />
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/flag/Boss.java" />
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/flag/ShootEnemy.java" />
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java" />
+        <option value="$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java" />
         <option value="$PROJECT_DIR$/src/cn/lazycat/fly/FlyGame.java" />
       </list>
     </option>
@@ -214,8 +208,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="2418" />
+    <option name="height" value="1318" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -856,14 +852,15 @@
       <workItem from="1510488656758" duration="12168000" />
       <workItem from="1510532155073" duration="262000" />
       <workItem from="1510548147998" duration="5069000" />
+      <workItem from="1510556839149" duration="4102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60842000" />
+    <option name="totallyTimeSpent" value="64944000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-9" y="-9" width="2418" height="1318" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -875,8 +872,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40481928" sideWeight="0.5028612" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40461403" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40481928" sideWeight="0.49713877" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -887,8 +884,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -905,7 +902,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -919,19 +916,101 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#16743#17723#0" expanded="true" />
+            <element signature="e#17722#17723#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#paint#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintBullets#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintEnemies#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintMark#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintLife#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#stepAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextStep#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#clearAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextClear#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#shootAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="e#16409#17389#0" expanded="true" />
-            <element signature="e#17388#17389#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Airplane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="e#795#796#0" expanded="false" />
+            <element signature="e#834#835#0" expanded="false" />
+            <element signature="e#879#880#0" expanded="false" />
+            <element signature="e#906#907#0" expanded="false" />
+            <element signature="e#947#948#0" expanded="false" />
+            <element signature="e#971#972#0" expanded="false" />
+            <element signature="e#1011#1012#0" expanded="false" />
+            <element signature="e#1057#1058#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/bullet/BossBullet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="17" column="47" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/flag/ShootEnemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/flag/Boss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Bee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#949#950#0" expanded="false" />
+            <element signature="e#981#982#0" expanded="false" />
+            <element signature="e#1274#1275#0" expanded="false" />
+            <element signature="e#1299#1300#0" expanded="false" />
+            <element signature="e#1344#1345#0" expanded="false" />
+            <element signature="e#1371#1372#0" expanded="false" />
+            <element signature="e#1412#1413#0" expanded="false" />
+            <element signature="e#1436#1437#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/FlyGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#16743#17723#0" expanded="true" />
+            <element signature="e#17722#17723#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -968,19 +1047,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#paint#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintBullets#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintEnemies#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintMark#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintLife#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#stepAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextStep#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#clearAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextClear#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#shootAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="e#16409#17389#0" expanded="true" />
-            <element signature="e#17388#17389#0" expanded="true" />
+            <element signature="e#16743#17723#0" expanded="true" />
+            <element signature="e#17722#17723#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -990,19 +1058,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#paint#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintBullets#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintEnemies#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintMark#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintLife#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#stepAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextStep#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#clearAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextClear#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#shootAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="e#16409#17389#0" expanded="true" />
-            <element signature="e#17388#17389#0" expanded="true" />
+            <element signature="e#16743#17723#0" expanded="true" />
+            <element signature="e#17722#17723#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1012,19 +1069,8 @@
         <state relative-caret-position="1330">
           <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#paint#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintBullets#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintEnemies#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintMark#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintLife#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#stepAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextStep#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#clearAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextClear#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#shootAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="e#16409#17389#0" expanded="true" />
-            <element signature="e#17388#17389#0" expanded="true" />
+            <element signature="e#16743#17723#0" expanded="true" />
+            <element signature="e#17722#17723#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1034,7 +1080,7 @@
         <state relative-caret-position="285">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1044,7 +1090,14 @@
         <state relative-caret-position="855">
           <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#949#950#0" expanded="false" />
+            <element signature="e#981#982#0" expanded="false" />
+            <element signature="e#1274#1275#0" expanded="false" />
+            <element signature="e#1299#1300#0" expanded="false" />
+            <element signature="e#1344#1345#0" expanded="false" />
+            <element signature="e#1371#1372#0" expanded="false" />
+            <element signature="e#1412#1413#0" expanded="false" />
+            <element signature="e#1436#1437#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1062,12 +1115,6 @@
           <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#556#557#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1096,7 +1143,7 @@
         <state relative-caret-position="394">
           <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1127,7 +1174,7 @@
         <state relative-caret-position="144">
           <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1137,7 +1184,7 @@
         <state relative-caret-position="150">
           <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1147,69 +1194,69 @@
         <state relative-caret-position="218">
           <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/Bomb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/DoubleFire.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/Bomb.java" />
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/DoubleFire.java" />
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/gift/Blood.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Bee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-565">
+        <state relative-caret-position="210">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#949#950#0" expanded="false" />
+            <element signature="e#981#982#0" expanded="false" />
+            <element signature="e#1274#1275#0" expanded="false" />
+            <element signature="e#1299#1300#0" expanded="false" />
+            <element signature="e#1344#1345#0" expanded="false" />
+            <element signature="e#1371#1372#0" expanded="false" />
+            <element signature="e#1412#1413#0" expanded="false" />
+            <element signature="e#1436#1437#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/flag/ShootEnemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="300">
           <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Airplane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#795#796#0" expanded="false" />
+            <element signature="e#834#835#0" expanded="false" />
+            <element signature="e#879#880#0" expanded="false" />
+            <element signature="e#906#907#0" expanded="false" />
+            <element signature="e#947#948#0" expanded="false" />
+            <element signature="e#971#972#0" expanded="false" />
+            <element signature="e#1011#1012#0" expanded="false" />
+            <element signature="e#1057#1058#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/flag/Boss.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        <state relative-caret-position="692">
+          <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1218,8 +1265,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/bullet/BossBullet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="392">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1228,20 +1275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="17" column="47" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="17" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/Airplane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="-612">
+          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1250,36 +1285,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/obj/enemy/BigPlane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="1170">
+          <caret line="52" column="26" lean-forward="false" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1072#1073#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/lazycat/fly/FlyGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="229" column="31" lean-forward="false" selection-start-line="229" selection-start-column="31" selection-end-line="229" selection-end-column="31" />
+        <state relative-caret-position="452">
+          <caret line="173" column="40" lean-forward="false" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#paint#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintBullets#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintEnemies#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintMark#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#paintLife#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#stepAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextStep#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#clearAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#nextClear#0;class#FlyGame#0" expanded="false" />
-            <element signature="method#shootAction#0;class#FlyGame#0" expanded="false" />
-            <element signature="e#16409#17389#0" expanded="true" />
-            <element signature="e#17388#17389#0" expanded="true" />
+            <element signature="e#16743#17723#0" expanded="true" />
+            <element signature="e#17722#17723#0" expanded="true" />
           </folding>
         </state>
       </provider>

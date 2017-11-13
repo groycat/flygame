@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.MemoryImageSource;
+import java.math.BigInteger;
 import java.util.*;
 import java.util.List;
 import java.util.Timer;
@@ -51,6 +52,7 @@ public class FlyGame extends JPanel {
     public static BufferedImage doubleFire;
     public static BufferedImage bigPlane;
 
+    public static List<BufferedImage> bloodBars;
 
     // 游戏的得分
     private static int score = 0;
@@ -87,6 +89,12 @@ public class FlyGame extends JPanel {
             doubleFire = ImageIO.read(FlyGame.class.getResource("images/doubleFire.png"));
             bigPlane = ImageIO.read(FlyGame.class.getResource("images/bigPlane.png"));
 
+            bloodBars = new ArrayList<>(67);
+            for (int i = 0; i < 67; ++i) {
+                bloodBars.add(ImageIO.read(FlyGame.class.getResource("images/bloodBars/bloodBar"
+                        + (i + 1) + ".png")));
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -104,6 +112,7 @@ public class FlyGame extends JPanel {
 
     private Hero hero = new Hero();         // 英雄机
     private Boss boss = null;                      // Boss机
+    private List<ShootEnemy> shootEnemies = new LinkedList<>();  // 所有要射击的敌方飞机
     private List<FlyingObject> flyings = new LinkedList<>(); // 所有对方飞行物
     private List<Bullet> bullets = new LinkedList<>();          // 所有子弹
 
@@ -142,9 +151,14 @@ public class FlyGame extends JPanel {
     }
 
     private void paintEnemies(Graphics g) {
-        for (FlyingObject flying : flyings) {
-            g.drawImage(flying.getImage(), flying.getX(),
-                    flying.getY(), null);
+
+        synchronized (this) {
+
+            for (FlyingObject flying : flyings) {
+                g.drawImage(flying.getImage(), flying.getX(),
+                        flying.getY(), null);
+            }
+
         }
     }
 
@@ -158,14 +172,9 @@ public class FlyGame extends JPanel {
     }
 
     private void paintLife(Graphics g) {
-        g.setColor(new Color(255, 255, 100));
-        g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-        int life = hero.getLife();
-        StringBuilder buffer = new StringBuilder("HP: ");
-        for (int i = 0; i < life; ++i) {
-            buffer.append("=");
+        if (hero.getLife() >= 1 && hero.getLife() <= 67) {
+            g.drawImage(bloodBars.get(hero.getLife() - 1), 20, HEIGHT - 100, null);
         }
-        g.drawString(buffer.toString(), 10, HEIGHT - 50);
     }
 
     private int flyIndex = 0;    // 敌人入场计时器
@@ -207,7 +216,7 @@ public class FlyGame extends JPanel {
             nextClear(bullets);
         }
     }
-    private void nextClear(List<?> objects) {
+    private synchronized void nextClear(List<?> objects) {
         Iterator<?> ite = objects.iterator();
         while (ite.hasNext()) {
             FlyingObject flying = (FlyingObject) ite.next();
@@ -246,18 +255,11 @@ public class FlyGame extends JPanel {
         }
 
         ++shootEnemyIndex;
-        if (shootEnemyIndex >= 40) {
+        if (shootEnemyIndex >= 60) {
             shootEnemyIndex = 0;
-            Iterator<FlyingObject> ite = flyings.iterator();
-            synchronized (this) {
-                while (ite.hasNext()) {
-                    FlyingObject flying = ite.next();
-                    if (flying instanceof ShootEnemy && !(flying instanceof Boss)) {
-                        ShootEnemy shootEnemy = (ShootEnemy) flying;
-                        List<BossBullet> bullets = shootEnemy.shoot();
-                        flyings.addAll(bullets);
-                    }
-                }
+            for (ShootEnemy enemy : shootEnemies) {
+                List<BossBullet> bullets = enemy.shoot();
+                flyings.addAll(bullets);  // 发射子弹
             }
         }
     }
@@ -306,6 +308,13 @@ public class FlyGame extends JPanel {
                                     speedLevel += addSpeedLevel;
                                 }
                             }
+
+                            if (flying instanceof ShootEnemy) {  // 击杀发射子弹的普通敌人
+                                // 把敌人从发射队列剔除
+                                ShootEnemy shootEnemy1 = (ShootEnemy) flying;
+                                shootEnemies.removeIf(shootEnemy1::equals);
+                            }
+
                             iteEnemy.remove();  // 清除这个敌人
                             score += enemy.getScore();  // 击败敌人都能加分
                         }
@@ -336,9 +345,9 @@ public class FlyGame extends JPanel {
                             hero.addLife(3);
                             break;
                         case Gift.CLEAR:
-                            // BOSS 机不能被炸弹消灭
-                            flyings.removeIf(enemy -> !(enemy instanceof Boss)
-                                    && enemy instanceof Enemy);
+                                // BOSS 机不能被炸弹消灭
+                                flyings.removeIf(enemy -> !(enemy instanceof Boss)
+                                        && enemy instanceof Enemy);
                             break;
                         case Gift.DOUBLR_FIRE:
                             hero.addDoubleFire(20);
@@ -408,6 +417,7 @@ public class FlyGame extends JPanel {
                 flying = new Bomb();
             } else {  // 没有礼包，获得一个敌人QAQ
                 flying = new BigPlane(level);
+                shootEnemies.add((BigPlane) flying);  // 加入到发射队列
             }
             flyings.add(flying);
 

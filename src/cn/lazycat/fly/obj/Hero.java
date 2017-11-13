@@ -28,7 +28,9 @@ public class Hero extends FlyingObject {
     }
 
     public void addLife(int more) {
-        this.life += more;
+        if (this.life <= 67) {
+            this.life += more;
+        }
     }
 
     public void reduceLife(int reduce) {
