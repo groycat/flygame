@@ -8,7 +8,8 @@ import java.util.List;
 /**
  * 代表所有Boss的接口
  */
-public abstract class Boss extends FlyingObject implements Enemy, Award {
+public abstract class Boss extends FlyingObject
+        implements Enemy, Award, ShootEnemy {
 
     protected int speed = 1;
     protected int health;
@@ -18,11 +19,7 @@ public abstract class Boss extends FlyingObject implements Enemy, Award {
         super.y = 0;
     }
 
-    /**
-     * Boss发射子弹
-     * @return 所有发射的子弹
-     */
-    public abstract List<BossBullet> shoot();
+
 
     @Override
     public boolean isDead() {

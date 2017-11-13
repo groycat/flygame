@@ -9,6 +9,7 @@ import cn.lazycat.fly.obj.bullet.BossBullet;
 import cn.lazycat.fly.obj.bullet.Bullet;
 import cn.lazycat.fly.obj.enemy.Airplane;
 import cn.lazycat.fly.obj.enemy.Bee;
+import cn.lazycat.fly.obj.enemy.BigPlane;
 import cn.lazycat.fly.obj.gift.Blood;
 import cn.lazycat.fly.obj.gift.Bomb;
 import cn.lazycat.fly.obj.gift.DoubleFire;
@@ -48,6 +49,7 @@ public class FlyGame extends JPanel {
     public static BufferedImage blood;
     public static BufferedImage bomb;
     public static BufferedImage doubleFire;
+    public static BufferedImage bigPlane;
 
 
     // 游戏的得分
@@ -83,6 +85,7 @@ public class FlyGame extends JPanel {
             blood = ImageIO.read(FlyGame.class.getResource("images/blood.png"));
             bomb = ImageIO.read(FlyGame.class.getResource("images/bomb.png"));
             doubleFire = ImageIO.read(FlyGame.class.getResource("images/doubleFire.png"));
+            bigPlane = ImageIO.read(FlyGame.class.getResource("images/bigPlane.png"));
 
 
         } catch (Exception e) {
@@ -101,8 +104,8 @@ public class FlyGame extends JPanel {
 
     private Hero hero = new Hero();         // 英雄机
     private Boss boss = null;                      // Boss机
-    private java.util.List<FlyingObject> flyings = new LinkedList<>(); // 所有对方飞行物
-    private java.util.List<Bullet> bullets = new LinkedList<>();          // 所有子弹
+    private List<FlyingObject> flyings = new LinkedList<>(); // 所有对方飞行物
+    private List<Bullet> bullets = new LinkedList<>();          // 所有子弹
 
     @Override
     public void paint(Graphics g) {
@@ -223,6 +226,7 @@ public class FlyGame extends JPanel {
 
     private short heroShootIndex = 0;
     private short bossShootIndex = 0;
+    private short shootEnemyIndex = 0;
     private void shootAction() {  // 发射子弹
         ++heroShootIndex;
         if (heroShootIndex >= (40 - speedLevel)) {  // 控制发射间隔
@@ -238,6 +242,22 @@ public class FlyGame extends JPanel {
                 bossShootIndex = 0;
                 List<BossBullet> bossBullets = boss.shoot();
                 flyings.addAll(bossBullets);
+            }
+        }
+
+        ++shootEnemyIndex;
+        if (shootEnemyIndex >= 40) {
+            shootEnemyIndex = 0;
+            Iterator<FlyingObject> ite = flyings.iterator();
+            synchronized (this) {
+                while (ite.hasNext()) {
+                    FlyingObject flying = ite.next();
+                    if (flying instanceof ShootEnemy && !(flying instanceof Boss)) {
+                        ShootEnemy shootEnemy = (ShootEnemy) flying;
+                        List<BossBullet> bullets = shootEnemy.shoot();
+                        flyings.addAll(bullets);
+                    }
+                }
             }
         }
     }
@@ -317,7 +337,8 @@ public class FlyGame extends JPanel {
                             break;
                         case Gift.CLEAR:
                             // BOSS 机不能被炸弹消灭
-                            flyings.removeIf(enemy -> !(enemy instanceof Boss) && enemy instanceof Enemy);
+                            flyings.removeIf(enemy -> !(enemy instanceof Boss)
+                                    && enemy instanceof Enemy);
                             break;
                         case Gift.DOUBLR_FIRE:
                             hero.addDoubleFire(20);
@@ -374,20 +395,21 @@ public class FlyGame extends JPanel {
     private void enterGiftAction() {
 
         ++giftIndex;
-        if (giftIndex > 500) {  // 每 5 秒可能产生一个礼包
+        if (giftIndex >= 500) {  // 每 5 秒可能产生一个礼包(或者敌人)
             giftIndex = 0;
             Random random = new Random();
             int rand = random.nextInt(20);
+            FlyingObject flying;
             if (rand >= 1 && rand <= 3) {
-                Gift blood = new Blood();
-                flyings.add((FlyingObject) blood);
+                flying = new Blood();
             } else if (rand > 3 && rand <= 4) {
-                Gift doubleFire = new DoubleFire();
-                flyings.add((DoubleFire) doubleFire);
+                flying = new DoubleFire();
             } else if (rand == 5) {
-                Gift bomb = new Bomb();
-                flyings.add((FlyingObject) bomb);
+                flying = new Bomb();
+            } else {  // 没有礼包，获得一个敌人QAQ
+                flying = new BigPlane(level);
             }
+            flyings.add(flying);
 
         }
 
